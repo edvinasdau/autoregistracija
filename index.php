@@ -1,27 +1,47 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['username'])) {
+	echo "LABAS " . ($_SESSION['username']);
+} else {
+	//user is guest
+	header("Location: login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Autoregistracija</title>
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
 		<div id="header" class="row">
-			<h1>Car registration</h1>
+			<div class="col" style="background-color: orange;">
+				<div>
+					<form method="POST">
+						<a href="logout.php" class="btn btn-warning">Logout></a>
+					</form>
+				</div>
+			</div>
+			
 		</div>
+		<h1>Car registration</h1>
 	</div>
 	<div class="container">
-		 <div class="row">
-		 	<div class="col-md-8">
-		 		<h2>Cars list</h2>
+		<div class="row">
+			<div class="col-md-8">
+				<h2>Cars list</h2>
 				<input class="form-control" type="search" name="search" id="search">
 				<input id="last5" class="btn btn-warning" type="button" value="Last 5 registered">
 				<select>
-				  <option></option>
+					<option></option>
 				</select>
 				<table class="table table-sm">
 					<thead>
@@ -32,8 +52,8 @@
 				</table>
 			</div>
 
-		 	<div class="col-md-4"><h2>Registration</h2>
-		 		<div id="alert"></div>
+			<div class="col-md-4"><h2>Registration</h2>
+				<div id="alert"></div>
 				<div class="input-group">
 					<input id="form_owner" class="form-control" type="text" name="owner" placeholder="Owner">
 				</div><br/>
@@ -50,9 +70,17 @@
 				<div class="input-group">
 					<input id="ajax_post" class="btn btn-success" type="button" value="Register car">
 				</div>
-		 	</div>
-		 </div>
+
+				<div class="col">
+					<form action="file.php" method="post" enctype="multipart/form-data"><br>
+						Select image to upload:
+						<input type="file" name="failas" id="failas"><br>
+						<input type="submit" value="Upload csv" name="submit">
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-<script src="script.js"></script>
+	<script src="app.js"></script>
 </body>
 </html>
