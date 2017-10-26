@@ -15,7 +15,7 @@ try {
         $statement->execute();
         $response['cars'] = $statement->fetchAll(PDO::FETCH_ASSOC);
         
-    } elseif(isset($_GET['last5'])) {
+    } elseif(isset($_GET['last'])) {
         $statement = $conn->prepare("SELECT * FROM cars ORDER BY id DESC LIMIT 5");
         $statement->execute();
         $response['cars'] = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -24,7 +24,7 @@ try {
         $statement->execute();
         $response['cars'] = $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-        
+    
     $conn = null;
 } catch(PDOException $e) {
     $response['message'] = ['type' => 'danger','body' => $e->getMessage()];

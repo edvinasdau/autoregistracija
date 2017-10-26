@@ -45,7 +45,7 @@ if (isset($_SESSION['username'])) {
 				</select>
 				<table class="table table-sm">
 					<thead>
-						<th>Id</th><th>Owner</th><th>License</th><th>Model</th><th>Make</th><th>Date</th>
+						<th>Id</th><th>Owner</th><th>License</th><th>Model</th><th>Make</th><th>Date</th><th>Delete</th>
 					</thead>
 					<tbody id="user_table_body">
 					</tbody>	
@@ -76,6 +76,7 @@ if (isset($_SESSION['username'])) {
 						Select image to upload:
 						<input type="file" name="failas" id="failas"><br>
 						<input type="submit" value="Upload csv" name="submit">
+						<input type="submit" value="Upload to db" name="sub">
 					</form>
 				</div>
 			</div>
